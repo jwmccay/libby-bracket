@@ -11,25 +11,27 @@ def matchup(timeline, n_compare=None):
 
     shuffle(timeline)
 
-    timeline_length = len(timeline)
-    half_length_int = int(timeline_length / 2)
-
     winners = []
     losers = []
     timeline_winners = []
 
+    timeline_length = len(timeline)
+    half_length_int = int(timeline_length / 2)
+
     timeline_1 = timeline[:half_length_int]
     timeline_2 = timeline[half_length_int:]
 
-    # if odd number of entries, always keep last
-    if (timeline_length % 2) != 0:
-        timeline_winners.append(timeline[-1])
-        description_odd = timeline[-1]["title"]["text"] \
-            + " by " + timeline[1]["author"]
-        winners.append(description_odd)
-
+    # handle case where user wants to compare all entries
     if n_compare is None:
+
         n_compare = half_length_int
+
+        # if odd number of entries, always keep last
+        if (timeline_length % 2) != 0:
+            timeline_winners.append(timeline[-1])
+            description_odd = timeline[-1]["title"]["text"] \
+                + " by " + timeline[-1]["author"]
+            winners.append(description_odd)
 
     for i in range(n_compare):
         print(i + 1, "out of", n_compare)
