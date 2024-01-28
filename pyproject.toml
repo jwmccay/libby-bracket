@@ -11,5 +11,7 @@ dependencies = [
     "requests"
 ]
 
-# [project.scripts]
-# my-script = "libby_bracket.libbytestscript.py"
+[project.scripts]
+lbfetch = "libby_bracket:lbfetch"
+lbclean = "libby_bracket:lbclean"
+lbcompare = "libby_bracket:lbcompare"
