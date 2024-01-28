@@ -5,7 +5,7 @@ Clean up libby data.
 import json
 import argparse
 
-from libby_rank.parse_libby import get_json_from_file
+from libby_bracket.parse_libby import get_json_from_file
 
 
 if __name__ == "__main__":

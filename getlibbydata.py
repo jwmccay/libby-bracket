@@ -5,7 +5,7 @@ Download data from Libby.
 import argparse
 import json
 
-from libby_rank.parse_libby import get_json_from_url
+from libby_bracket.parse_libby import get_json_from_url
 
 
 if __name__ == "__main__":

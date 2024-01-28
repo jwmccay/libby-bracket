@@ -6,7 +6,7 @@ import argparse
 from random import shuffle
 import json
 
-from libby_rank.parse_libby import get_json_from_file
+from libby_bracket.parse_libby import get_json_from_file
 
 
 def get_cli_input() -> int:
