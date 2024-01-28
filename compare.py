@@ -16,14 +16,16 @@ if __name__ == "__main__":
                         prog='getlibbydata',
                         description='Gets data from Libby')
 
-    parser.add_argument('libby_json')  # positional argument
+    parser.add_argument('-j', '--job_id')
     parser.add_argument('-i', '--iteration')
     parser.add_argument('-n', '--comparisons')
     parser.add_argument('-a', '--compare_all', action='store_true')
 
     args = parser.parse_args()
 
-    libby_json = get_json_from_file(args.libby_json)
+    libby_json = get_json_from_file(
+        f"libby_{args.job_id}_{args.iteration}.json"
+    )
 
     timeline = libby_json["timeline"]
 
@@ -36,9 +38,11 @@ if __name__ == "__main__":
 
     output_json = {"version": 1,
                     "timeline": results["timeline_winners"]}
+
+    new_iteration = str(int(args.iteration) + 1)
     
-    with open(f'libby{args.iteration}.json', 'w') as f:
+    with open(f'libby_{args.job_id}_{new_iteration}.json', 'w') as f:
         json.dump(output_json, f)
 
-    with open(f'winners_summary{args.iteration}.txt', 'w') as f:
+    with open(f'winners_{args.job_id}_{new_iteration}.txt', 'w') as f:
         f.writelines(line + '\n' for line in results["winners"])

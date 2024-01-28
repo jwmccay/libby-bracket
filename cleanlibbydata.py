@@ -12,13 +12,15 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(
                         prog='cleanlibbydata',
-                        description='CLean data from Libby')
+                        description='Clean data from Libby')
 
-    parser.add_argument('libby_json')  # positional argument
+    # parser.add_argument('libby_json')  # positional argument
+    parser.add_argument('-j', '--job_id')
 
     args = parser.parse_args()
 
-    libby_json = get_json_from_file(args.libby_json)
+    libby_json = get_json_from_file(
+        f"libby_download_{args.job_id}.json")
 
     timeline = libby_json["timeline"]
 
@@ -37,5 +39,5 @@ if __name__ == "__main__":
     output_json = {"version": 1,
                     "timeline": timeline_new}
 
-    with open(f'libby.json', 'w') as f:
+    with open(f'libby_{args.job_id}_0.json', 'w') as f:
         json.dump(output_json, f)
