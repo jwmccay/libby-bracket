@@ -67,4 +67,9 @@ def matchup(timeline, n_compare=None):
         else:
             print("Bad input!")
 
-    return timeline_winners
+    results = {
+        "timeline_winners": timeline_winners,
+        "winners": winners,
+        "losers": losers}
+
+    return results

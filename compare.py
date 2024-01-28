@@ -29,13 +29,16 @@ if __name__ == "__main__":
 
     # TODO handle bad number of comparisons
     if not args.compare_all and args.comparisons is not None:
-        timeline_winners = matchup(timeline,
+        results = matchup(timeline,
             n_compare=int(args.comparisons))
     else:
-        timeline_winners = matchup(timeline)
+        results = matchup(timeline)
 
     output_json = {"version": 1,
-                    "timeline": timeline_winners}
-
+                    "timeline": results["timeline_winners"]}
+    
     with open(f'libby{args.iteration}.json', 'w') as f:
         json.dump(output_json, f)
+
+    with open(f'winners_summary{args.iteration}.txt', 'w') as f:
+        f.writelines(line + '\n' for line in results["winners"])
