@@ -23,5 +23,5 @@ if __name__ == "__main__":
 
     # print(json.dumps(libby_json, indent=2))
 
-    with open('libby.json', 'w') as f:
+    with open('libby_download.json', 'w') as f:
         json.dump(libby_json, f)

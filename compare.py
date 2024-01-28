@@ -56,14 +56,21 @@ if __name__ == "__main__":
     shuffle(timeline)
 
     timeline_length = len(timeline)
-
-    # TODO: handle odd timeline lengths
-    timeline_1 = timeline[:int(timeline_length / 2)]
-    timeline_2 = timeline[int(timeline_length / 2):]
+    half_length_int = int(timeline_length / 2)
 
     winners = []
     losers = []
     winners_full = []
+
+    timeline_1 = timeline[:half_length_int]
+    timeline_2 = timeline[half_length_int:]
+
+    # if odd number of entries, always keep last
+    if (timeline_length % 2) != 0:
+        winners_full.append(timeline[-1])
+        description_odd = timeline[-1]["title"]["text"] \
+            + " by " + timeline[1]["author"]
+        winners.append(description_odd)
 
     print(args.compare_all)
 
@@ -71,7 +78,7 @@ if __name__ == "__main__":
     if not args.compare_all:
         n_compare = int(args.comparisons)
     else:
-        n_compare = int(timeline_length / 2)
+        n_compare = half_length_int
 
     for i in range(n_compare):
         print(i, "out of", n_compare)
