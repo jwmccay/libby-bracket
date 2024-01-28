@@ -4,7 +4,17 @@ A very simple command line tool to review and rank reading history from Libby. I
 
 ## Installation
 
+```shell
+git clone https://github.com/jwmccay/libby-bracket.git
+cd libby-bracket
+pip install .
+```
+
 ## Usage
+
+You'll need the URL of your Libby timeline. This can can be found in the app in `Timeline/Actions/Export Timeline`.
+
+Note that the tool is an MVP, and there is minimal checking of inputs. It will have undefined behavior if you give it a bad command line flag or choose a number of comparisons that is too large or small.
 
 ```shell
 # get data from libby
