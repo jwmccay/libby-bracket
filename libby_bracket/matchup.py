@@ -45,6 +45,7 @@ def matchup(timeline, n_compare=None):
         print("   3  Both win :)")
         print("   4  Both lose :(")
 
+        # TODO make this adapt to number of inputs
         idx = get_matchup_input()
 
         if idx == 1:
