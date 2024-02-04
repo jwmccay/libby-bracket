@@ -2,6 +2,7 @@
 Command line interface functions
 """
 
+
 def get_matchup_input() -> int:
 
     valid_input = False

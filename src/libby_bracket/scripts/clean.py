@@ -33,7 +33,7 @@ def clean():
             titles.append(event["title"]["text"])
 
     output_json = {"version": 1,
-                    "timeline": timeline_new}
+                   "timeline": timeline_new}
 
     with open(f'libby_{args.job_id}_0.json', 'w') as f:
         json.dump(output_json, f)

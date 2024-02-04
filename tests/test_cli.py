@@ -12,6 +12,7 @@ def test_get_matchup_input_valid(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(cli_inputs))
     assert get_matchup_input() == 3
 
+
 def test_get_matchup_input_invalid(monkeypatch):
     """Test CLI where first input is invalid but second is valid.
     """

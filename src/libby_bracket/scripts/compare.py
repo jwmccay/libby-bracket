@@ -31,12 +31,12 @@ def compare():
     # TODO handle bad number of comparisons
     if not args.compare_all and args.comparisons is not None:
         results = matchup(timeline,
-            n_compare=int(args.comparisons))
+                          n_compare=int(args.comparisons))
     else:
         results = matchup(timeline)
 
     output_json = {"version": 1,
-                    "timeline": results["timeline_winners"]}
+                   "timeline": results["timeline_winners"]}
 
     new_iteration = str(int(args.iteration) + 1)
 
