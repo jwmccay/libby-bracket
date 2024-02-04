@@ -3,7 +3,6 @@ Main comparison script
 """
 
 import argparse
-from random import shuffle
 import json
 
 from libby_bracket.parse_libby import get_json_from_file
@@ -40,7 +39,7 @@ def compare():
                     "timeline": results["timeline_winners"]}
 
     new_iteration = str(int(args.iteration) + 1)
-    
+
     with open(f'libby_{args.job_id}_{new_iteration}.json', 'w') as f:
         json.dump(output_json, f)
 

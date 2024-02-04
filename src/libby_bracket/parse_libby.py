@@ -14,6 +14,7 @@ def get_json_from_url(libby_url: str) -> dict:
 
     return libby_json
 
+
 def get_json_from_file(libby_json_path: str) -> dict:
 
     with open(libby_json_path, 'r') as f:
