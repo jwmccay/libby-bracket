@@ -31,3 +31,11 @@ lbcompare -j jwm -n 8 -i 0
 # compare all entries in the `1` json
 lbcompare -j jwm -a -i 1
 ```
+
+## Development
+
+To develop, install as an editable package with optional development dependencies.
+
+```shell
+pip install -e .[dev]
+```
