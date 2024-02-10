@@ -1,7 +1,17 @@
 import json
 import argparse
 
-from libby_bracket.parse_libby import get_json_from_file
+from libby_bracket.parse_libby import (
+    get_json_from_file,
+    cleanup_downloaded_timeline)
+
+clean_ascii = r"""
+    ___     ______ ______  ___     ______  __        ____     ___
+   /  /    / ==  //  ___/ /  /    /  ___/ /  \      /    \   /  /
+  /  /    /____< /  /    /  /    /  /__  /    \    /  /\  \ /  /
+ /  /___ /     //  /___ /  /___ /  /___ /  __  \  /  /  \  \  /
+/______//_____//______//______//______//__/  \__\/__/    \___/
+"""
 
 
 def clean():
@@ -20,20 +30,22 @@ def clean():
 
     timeline = libby_json["timeline"]
 
-    timeline_new = []
-    titles = []
+    timeline_new, stats = cleanup_downloaded_timeline(
+        timeline)
 
-    for event in timeline:
+    output_name = f'libby_{args.job_id}_0.json'
 
-        check_duplicates = any(
-            [event["title"]["text"] == title for title in titles])
+    print("lbclean")
+    print(clean_ascii)
 
-        if event["activity"] == "Borrowed" and not check_duplicates:
-            timeline_new.append(event)
-            titles.append(event["title"]["text"])
+    print(f"Out of {stats["original_count"]} events:")
+    print(f"   {stats["duplicate_count"]} duplicates")
+    print(f"   {stats["nonborrowed_count"]} non-borrow events")
+    print(f"   {stats["nonborrowed_count"]} exported for review")
+
 
     output_json = {"version": 1,
                    "timeline": timeline_new}
 
-    with open(f'libby_{args.job_id}_0.json', 'w') as f:
+    with open(output_name, 'w') as f:
         json.dump(output_json, f)
