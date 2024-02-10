@@ -25,24 +25,25 @@ def clean():
 
     args = parser.parse_args()
 
-    libby_json = get_json_from_file(
-        f"libby_download_{args.job_id}.json")
+    input_name = f"libby_download_{args.job_id}.json"
+    output_name = f"libby_{args.job_id}_0.json"
+
+    libby_json = get_json_from_file(input_name)
 
     timeline = libby_json["timeline"]
 
     timeline_new, stats = cleanup_downloaded_timeline(
         timeline)
 
-    output_name = f'libby_{args.job_id}_0.json'
+    print(clean_ascii[1:])
 
-    print("lbclean")
-    print(clean_ascii)
-
-    print(f"Out of {stats["original_count"]} events:")
+    print("Read\n   ", input_name)
+    print("Output\n   ", output_name)
+    print("Stats")
+    print(f"   {stats["original_count"]} total events")
     print(f"   {stats["duplicate_count"]} duplicates")
     print(f"   {stats["nonborrowed_count"]} non-borrow events")
-    print(f"   {stats["nonborrowed_count"]} exported for review")
-
+    print(f"   {stats["new_count"]} exported for review")
 
     output_json = {"version": 1,
                    "timeline": timeline_new}
