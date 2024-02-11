@@ -6,6 +6,6 @@ __pycache__
 *.tar.gz
 
 # Data
-*.json
-*.csv
-*.txt
+libby*.json
+libby*.csv
+winners*.txt

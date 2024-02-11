@@ -6,12 +6,19 @@ build-backend = "setuptools.build_meta"
 name = "libby_bracket"
 description = "CLI to rank books read on Libby"
 requires-python = ">=3.7"
-version = "0.0.1"
-dependencies = [
-    "requests"
-]
+version = "0.1.0"
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies = {dev = { file = ["requirements-dev.txt"] }}
 
 [project.scripts]
 lbfetch = "libby_bracket:lbfetch"
 lbclean = "libby_bracket:lbclean"
-lbcompare = "libby_bracket:lbcompare"
+lbcomp = "libby_bracket:lbcomp"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]

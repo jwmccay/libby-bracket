@@ -2,14 +2,15 @@
 Command line interface functions
 """
 
+
 def get_matchup_input() -> int:
 
     valid_input = False
-    
+
     while not valid_input:
 
         idx = input('> ')
-        
+
         if idx == "1":
             valid_input = True
             idx = 1
