@@ -41,15 +41,15 @@ def cleanup_downloaded_timeline(timeline):
             duplicate_count += 1
 
         if event["activity"] != "Borrowed":
-            nonborrowed_count +=1
+            nonborrowed_count += 1
 
         if event["activity"] == "Borrowed" and not check_duplicates:
             timeline_new.append(event)
             titles.append(event["title"]["text"])
 
     duplicate_stats = {"original_count": len(timeline),
-                        "duplicate_count": duplicate_count,
-                        "nonborrowed_count": nonborrowed_count,
-                        "new_count": len(timeline_new)}
+                       "duplicate_count": duplicate_count,
+                       "nonborrowed_count": nonborrowed_count,
+                       "new_count": len(timeline_new)}
 
     return timeline_new, duplicate_stats
