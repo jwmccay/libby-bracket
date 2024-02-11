@@ -26,10 +26,10 @@ lbclean -j jwm
 
 # do 8 random comparisons from the `0` json
 # creates the `1` json
-lbcompare -j jwm -n 8 -i 0
+lbcomp -j jwm -n 8 -i 0
 
 # compare all entries in the `1` json
-lbcompare -j jwm -a -i 1
+lbcomp -j jwm -a -i 1
 ```
 
 ## Development

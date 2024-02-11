@@ -16,7 +16,7 @@ optional-dependencies = {dev = { file = ["requirements-dev.txt"] }}
 [project.scripts]
 lbfetch = "libby_bracket:lbfetch"
 lbclean = "libby_bracket:lbclean"
-lbcompare = "libby_bracket:lbcompare"
+lbcomp = "libby_bracket:lbcomp"
 
 [tool.pytest.ini_options]
 addopts = [
