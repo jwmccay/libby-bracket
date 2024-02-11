@@ -8,6 +8,17 @@ import json
 from libby_bracket.parse_libby import get_json_from_file
 from libby_bracket.matchup import matchup
 
+comp_ascii = r"""
+    ___     ______ ______  _______ __    __ _______
+   /  /    / ==  //  ___/ /  __  //  \  /  \\   _  \
+  /  /    /____< /  /    /  / / //    \/    \\   -__\
+ /  /___ /     //  /___ /  /_/ //  /\    /\  \\  \
+/______//_____//______//______//__/  \__/  \__\\__\
+"""
+comp_instructions = r"""
+For each comparison, type one of the prompted numbers and hit return.
+"""
+
 
 def compare():
 
@@ -27,6 +38,9 @@ def compare():
     )
 
     timeline = libby_json["timeline"]
+
+    print(comp_ascii[1:])
+    print(comp_instructions)
 
     # TODO handle bad number of comparisons
     if not args.compare_all and args.comparisons is not None:
